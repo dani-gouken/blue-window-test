@@ -1,0 +1,34 @@
+@baseUrl = http://localhost
+
+GET {{baseUrl}}/api/brand
+Accept: application/json
+
+###
+
+POST {{baseUrl}}/api/brand
+Content-Type: application/json
+Accept: application/json 
+
+{
+    "brand_name": "Test",
+    "brand_image": "http://google.fr",
+    "rating": 4.1
+}
+###
+PUT {{baseUrl}}/api/brand/4
+Content-Type: application/json
+Accept: application/json 
+
+{
+    "brand_name": "Updated"
+}
+###
+
+DELETE {{baseUrl}}/api/brand/1
+
+###
+
+GET {{baseUrl}}/api/brand/2
+Accept: application/json
+
+###
