@@ -43,7 +43,7 @@ onMounted(fetchBrands)
                 <li v-for="brand in brands" :key="brand.brand_id"
                     class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
                     <div class="flex min-w-0 gap-x-4">
-                        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="brand.image" alt="">
+                        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="brand.brand_image" alt="">
                         <div class="min-w-0 flex-auto">
                             <p class="text-sm font-semibold leading-6 text-gray-900">
                                 <a href="#">
