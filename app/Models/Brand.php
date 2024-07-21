@@ -14,7 +14,7 @@ class Brand extends Model
     ];
     
     protected $casts = [
-        'rating' => 'integer'
+        'rating' => 'float'
     ];
 
     use HasFactory;
