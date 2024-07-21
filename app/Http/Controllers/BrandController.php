@@ -24,7 +24,7 @@ class BrandController extends Controller
         return new BrandResource($brand);
     }
 
-    public function show(Brand $brand)
+    public function show(Brand $brand): BrandResource
     {
         return new BrandResource($brand);
     }
