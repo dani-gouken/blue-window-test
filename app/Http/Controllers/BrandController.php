@@ -5,15 +5,26 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Models\Brand;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
 class BrandController extends Controller
 {
-    public function index(): AnonymousResourceCollection
+    public function index(Request $request): AnonymousResourceCollection
     {
-        return BrandResource::collection(Brand::latest()->get());
+        $countryCode = $request->headers->get('CF-IPCountry');
+        /** @var Country|null $country  **/
+        $country = $countryCode == null ?
+            null :
+            Country::where('code', $countryCode)->first();
+
+        if ($country) {
+            return BrandResource::collection($country->topBrands());
+        }
+
+        return BrandResource::collection(Brand::findByTopRating());
     }
 
     public function store(StoreBrandRequest $request): BrandResource
